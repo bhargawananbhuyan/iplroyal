@@ -26,6 +26,7 @@ const startApp = async () => {
 		})
 
 	// configure cors
+	if (process.env.NODE_ENV === 'development') app.use(require('cors')({ origin: '*' }))
 
 	// apollo GraphQL server
 	const apolloServer = new ApolloServer({
@@ -37,7 +38,7 @@ const startApp = async () => {
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 	})
 	await apolloServer.start()
-	apolloServer.applyMiddleware({ app, path: '/' })
+	apolloServer.applyMiddleware({ app })
 
 	// serving static files
 	if (process.env.NODE_ENV === 'production') {

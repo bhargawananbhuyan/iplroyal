@@ -8,7 +8,8 @@ module.exports = gql`
 		fullName: String
 		email: String!
 		password: String!
-		created_at: Date!
+		isAdmin: Boolean!
+		createdAt: Date!
 	}
 
 	type Query {

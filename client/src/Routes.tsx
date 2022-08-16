@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes as Switch, Route } from 'react-router-dom'
-import Login from './views/Login'
+import Signin from './views/Signin'
 
 const Routes: React.FC = () => {
 	return (
 		<Switch>
-			<Route path='/signin' element={<Login />} />
+			<Route path='/signin' element={<Signin />} />
 		</Switch>
 	)
 }
