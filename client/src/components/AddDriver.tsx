@@ -80,7 +80,7 @@ const AddDriver: React.FC = () => {
 			// upload license doc
 			const formData = new FormData()
 			formData.append('licenseDoc', licenseDoc.data)
-			const res = await axios.post('http://localhost:5000/api/upload', formData, {
+			const res = await axios.post('/api/upload', formData, {
 				headers: {
 					'Content-type': 'multipart/form-data',
 					authorization: `Bearer ${localStorage.getItem('@token')}`,
@@ -238,7 +238,7 @@ const AddDriver: React.FC = () => {
 					</div>
 				</section>
 
-				<input type='submit' value='Submit' />
+				<input type='submit' value={_loading ? 'Please wait...' : 'Submit'} />
 			</form>
 
 			{data?.getDrivers?.length > 0 && (
