@@ -25,8 +25,12 @@ const startApp = async () => {
 			console.error(error)
 		})
 
-	// configure cors
+	// middlewares
 	if (process.env.NODE_ENV === 'development') app.use(require('cors')({ origin: '*' }))
+	app.use(express.json())
+
+	// additional microservices
+	app.use('/api/upload', require('./routes/upload'))
 
 	// apollo GraphQL server
 	const apolloServer = new ApolloServer({
@@ -35,6 +39,7 @@ const startApp = async () => {
 		context: ({ req, res }) => {
 			return { req, res }
 		},
+		csrfPrevention: true,
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 	})
 	await apolloServer.start()

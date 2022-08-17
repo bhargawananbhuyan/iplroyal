@@ -8,13 +8,13 @@ const App = () => {
 		<ApolloProvider client={client}>
 			<BrowserRouter>
 				<div className='app'>
-					<header>This is the header</header>
+					<header>IPL Royal</header>
 
 					<main>
 						<Routes />
 					</main>
 
-					<footer>This is the footer</footer>
+					<footer>&copy; 2022, All rights reserved</footer>
 				</div>
 			</BrowserRouter>
 		</ApolloProvider>

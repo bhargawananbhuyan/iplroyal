@@ -18,12 +18,14 @@ const createSuperUser = async () => {
 		process.exit(1)
 	}
 
+	// get the password
 	const password = readlineSync.questionNewPassword('Enter password: ')
 
 	// verify user input
 	const isOkay = readlineSync.question(
 		`Do you want to proceed adding ${clc.green.underline(email)} as administrator? (Y/n): `
 	)
+
 	if (isOkay === 'Y' || isOkay === 'y') {
 		// create new admin
 		const newAdmin = new User({ email, password: await hashPassword(password), isAdmin: true })
